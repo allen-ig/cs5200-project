@@ -11,12 +11,14 @@ class Header extends React.Component {
 
     render() {
         return (
-            <Navbar className='justify-content-between'>
+            <Navbar sticky='top'>
                 <Navbar.Brand href='/'>NuMDB</Navbar.Brand>
-                <Navbar.Collapse>
+                <Nav>
+                    <Nav.Link href='/about'>About</Nav.Link>
+                </Nav>
+                <Navbar.Collapse className='justify-content-end'>
                     <Nav>
-                        <Nav.Link href='/about'>about</Nav.Link>
-                        <Button variant='link' onClick={this.openLoginModal}>login</Button>
+                        <Nav.Link onClick={this.openLoginModal}>Login</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

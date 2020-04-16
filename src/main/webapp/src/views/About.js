@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardGroup, Card } from 'react-bootstrap'
+import { CardDeck, Card } from 'react-bootstrap'
 
 class About extends React.Component{
 
@@ -12,17 +12,17 @@ class About extends React.Component{
 
     render() {
         return(
-            <CardGroup>
+            <CardDeck>
                 {this.teamMembers.map((name, index) => {
                     return (
-                        <Card style={{width: '18rem'}} key={index}>
+                        <Card style={{width: '18rem'}} key={index} bg='primary' text='white' border='dark'>
+                            <Card.Header>{name}</Card.Header>
                             <Card.Body>
-                                <Card.Title>{name}</Card.Title>
                                 <Card.Text>{`${name} is a developer`}</Card.Text>
                             </Card.Body>
                         </Card>)
                 })}
-            </CardGroup>
+            </CardDeck>
         )
     }
 }
