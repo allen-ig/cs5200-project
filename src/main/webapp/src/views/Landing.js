@@ -20,7 +20,7 @@ class Landing extends React.Component{
                 <Carousel.Item>
                     <img
                         className='d-block w-100'
-                        src={require("./../movies.png")}
+                        src={require("./../movies2.png")}
                         alt="logo"
                     />
                     <Carousel.Caption>
