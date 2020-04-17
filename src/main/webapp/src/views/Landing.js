@@ -1,26 +1,45 @@
 import React from 'react';
-import {withRouter, Link} from "react-router-dom";
-import { Form, Button } from 'react-bootstrap'
-import Login from "../components/Login";
+import { Form, Carousel } from 'react-bootstrap'
+import Searching from './../components/Searching'
 
 class Landing extends React.Component{
+    
+    MyCarousel = () => {
+        return (
+            <Carousel interval={4000}>
+                <Carousel.Item>
+                    <img
+                        className='d-block w-100'
+                        src={require("./../cinema1.png")}
+                        alt="cinema1"
+                    />
+                    <Carousel.Caption>
+                        <h3>First</h3>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                        className='d-block w-100'
+                        src={require("./../movies.png")}
+                        alt="logo"
+                    />
+                    <Carousel.Caption>
+                        <h3>Second</h3>
+                    </Carousel.Caption>
+                </Carousel.Item>
+            </Carousel>
+        )
+    }
+    
     render() {
         return (
-            <Form>
-                {/*<Form.Group>*/}
-                {/*    <Form.Label>Username</Form.Label>*/}
-                {/*    <Form.Control placeholder="Enter your Username"/>*/}
-                {/*</Form.Group>*/}
-                {/*<Link to={{pathname: '/'}} >*/}
-                {/*    <Button className="login" variant="success" size='lg' block>login</Button>*/}
-                {/*</Link>*/}
-                {/*<Link to={{pathname: '/register'}}>*/}
-                {/*    <Button className="register" variant="primary" size='lg' block>register</Button>*/}
-                {/*</Link>*/}
-                <h1>Landing</h1>
-            </Form>
+            <div className="container mt-4 mb-4">
+                <Searching/>
+                <hr/>
+                <this.MyCarousel/>
+            </div>
         )
     }
 }
 
-export default withRouter(Landing);
+export default Landing;

@@ -11,7 +11,7 @@ class Header extends React.Component {
 
     render() {
         return (
-            <Navbar sticky='top'>
+            <Navbar sticky='top' bg='light'>
                 <Navbar.Brand href='/'>NuMDB</Navbar.Brand>
                 <Nav>
                     <Nav.Link href='/about'>About</Nav.Link>

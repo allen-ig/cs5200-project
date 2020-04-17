@@ -31,9 +31,13 @@ class Login extends React.Component {
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
-                        <Form.Group>
+                        <Form.Group controlId='formBasicUsername'>
                             <Form.Label>Username</Form.Label>
                             <Form.Control placeholder="Enter your Username"/>
+                        </Form.Group>
+                        <Form.Group controlId='formBasicPassword'>
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type='password' placeholder="Password"/>
                         </Form.Group>
                         {/*<Link to={{pathname: '/'}} >*/}
                         {/*    <Button className="login" variant="success" size='lg' block>login</Button>*/}
