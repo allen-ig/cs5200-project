@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Carousel } from 'react-bootstrap'
-import Searching from './../components/Searching'
+import SearchField from '../components/SearchField'
 
 class Landing extends React.Component{
     
@@ -34,7 +34,7 @@ class Landing extends React.Component{
     render() {
         return (
             <div className="container mt-4 mb-4">
-                <Searching/>
+                <SearchField/>
                 <hr/>
                 <this.MyCarousel/>
             </div>
