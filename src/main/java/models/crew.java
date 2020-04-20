@@ -1,4 +1,4 @@
-package edu.northeastern.cs5200.models;
+package models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class crew {
+public class Crew {
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
@@ -14,7 +14,7 @@ public class crew {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JsonIgnore
     @JoinColumn(name = "movie_id")
-    private movie movie;
+    private Movie movie;
 
     private String name;
     private Date birth_year;
@@ -36,11 +36,11 @@ public class crew {
         Id = id;
     }
 
-    public edu.northeastern.cs5200.models.movie getMovie() {
+    public Movie getMovie() {
         return movie;
     }
 
-    public void setMovie(edu.northeastern.cs5200.models.movie movie) {
+    public void setMovie(Movie movie) {
         this.movie = movie;
     }
 

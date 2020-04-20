@@ -1,10 +1,10 @@
-package edu.northeastern.cs5200.models;
+package models;
 
 import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class person {
+public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
@@ -53,6 +53,6 @@ public class person {
         this.lastname = lastname;
     }
 
-    public person(){};
+    public Person(){};
 
 }

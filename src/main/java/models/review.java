@@ -1,33 +1,33 @@
-package edu.northeastern.cs5200.models;
+package models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
 @Entity
-public class review {
+public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
     @ManyToOne(cascade = CascadeType.MERGE)
     @JsonIgnore
     @JoinColumn(name = "movie_id")
-    private movie movie;
+    private Movie movie;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JsonIgnore
     @JoinColumn(name = "user_id")
-    private user user;
+    private User user;
 
     private Float rate;
     private String text;
 
 
-    public user getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(user user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
@@ -39,13 +39,19 @@ public class review {
         Id = id;
     }
 
-    public edu.northeastern.cs5200.models.movie getMovie() {
+    public Movie getMovie() {
         return movie;
     }
 
-    public void setMovie(edu.northeastern.cs5200.models.movie movie) {
+    public void setMovie(Movie movie) {
         this.movie = movie;
     }
+    public void addAuthor(User user){
+        this.user=user;
+        if (!user.getReviews().contains(this)){
+            user.getReviews().add(this);
+        }
+    }
 
-    public review(){}
+    public Review(){}
 }

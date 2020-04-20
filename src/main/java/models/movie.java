@@ -1,10 +1,10 @@
-package edu.northeastern.cs5200.models;
+package models;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class movie {
+public class Movie {
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
@@ -22,17 +22,17 @@ public class movie {
     }
 
     @OneToMany(mappedBy = "movie",cascade= CascadeType.MERGE)
-    private List<review> reviews;
+    private List<Review> Reviews;
 
     @OneToMany(mappedBy = "movie",cascade= CascadeType.MERGE)
-    private List<crew> crews;
+    private List<Crew> Crews;
 
-    public List<crew> getCrews() {
-        return crews;
+    public List<Crew> getCrews() {
+        return Crews;
     }
 
-    public void setCrews(List<crew> crews) {
-        this.crews = crews;
+    public void setCrews(List<Crew> Crews) {
+        this.Crews = Crews;
     }
 
     public int getId() {
@@ -67,11 +67,11 @@ public class movie {
         this.language = language;
     }
 
-    public List<review> getReviews() {
-        return reviews;
+    public List<Review> getReviews() {
+        return Reviews;
     }
 
-    public void setReviews(List<review> reviews) {
-        this.reviews = reviews;
+    public void setReviews(List<Review> Reviews) {
+        this.Reviews = Reviews;
     }
 }

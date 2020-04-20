@@ -1,26 +1,24 @@
-package edu.northeastern.cs5200.models;
+package models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 @Entity
 
-public class user extends person{
+public class User extends Person {
     private int grad_year;
     private float scholarship;
     @OneToMany(mappedBy = "user",cascade=CascadeType.MERGE)
-    private List<user> users;
+    private List<User> Users;
     @ManyToOne(cascade = CascadeType.MERGE)
     @JsonIgnore
     @JoinColumn(name = "recommender_id")
-    private user user;
+    private User user;
 
     @OneToMany(mappedBy = "user",cascade=CascadeType.MERGE)
-    private List<review> reviews;
+    private List<Review> Reviews;
 
 //    @ManyToOne(fetch = FetchType.EAGER,optional = true,cascade = CascadeType.ALL)
 //    @JsonIgnore
@@ -44,19 +42,35 @@ public class user extends person{
         this.scholarship = scholarship;
     }
 
-    public List<edu.northeastern.cs5200.models.user> getUsers() {
-        return users;
+    public List<User> getUsers() {
+        return Users;
     }
 
-    public void setUsers(List<edu.northeastern.cs5200.models.user> users) {
-        this.users = users;
+    public void setUsers(List<User> Users) {
+        this.Users = Users;
     }
 
-    public edu.northeastern.cs5200.models.user getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(edu.northeastern.cs5200.models.user user) {
+    public void setUser(User user) {
         this.user = user;
     }
+
+    public List<Review> getReviews() {
+        return Reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        Reviews = reviews;
+    }
+
+    public void addReview(Review review){
+        this.Reviews.add(review);
+        if (review.getUser()!=this){
+            review.setUser(this);
+        }
+    }
+
 }
