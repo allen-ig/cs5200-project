@@ -1,12 +1,12 @@
-package controller;
+package server.controller;
 
-import models.HelloObject;
+import server.models.HelloObject;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import repositories.HelloRepository;
+import server.repositories.HelloRepository;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class HelloController {
 
 	@RequestMapping("/api/hello/string")
 	public String sayHello() {
-		return "Hello Yanchi Li!";
+		return "Hello Li!";
 	}
 
 	@RequestMapping("/api/hello/object")

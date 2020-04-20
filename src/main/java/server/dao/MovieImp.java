@@ -1,11 +1,11 @@
-package dao;
+package server.dao;
 
-import models.*;
+import server.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import repositories.CrewRepository;
-import repositories.MovieRepository;
-import repositories.PersonRepository;
-import repositories.ReviewRepository;
+import server.repositories.CrewRepository;
+import server.repositories.MovieRepository;
+import server.repositories.PersonRepository;
+import server.repositories.ReviewRepository;
 
 public class MovieImp implements MovieDao {
     @Autowired
@@ -55,5 +55,11 @@ public class MovieImp implements MovieDao {
         user.addReview(review);
         personRepository.save(user);
         return user;
+    }
+
+    private static MovieImp movieImp;
+    public static MovieImp getInstance(){
+        if (movieImp == null) movieImp = new MovieImp();
+        return movieImp;
     }
 }

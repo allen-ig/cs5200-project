@@ -10,7 +10,7 @@ class Landing extends React.Component{
                 <Carousel.Item>
                     <img
                         className='d-block w-100'
-                        src={require("./../cinema1.png")}
+                        src={require("../cinema1.png")}
                         alt="cinema1"
                     />
                     <Carousel.Caption>
@@ -20,7 +20,7 @@ class Landing extends React.Component{
                 <Carousel.Item>
                     <img
                         className='d-block w-100'
-                        src={require("./../movies2.png")}
+                        src={require("../movies2.png")}
                         alt="logo"
                     />
                     <Carousel.Caption>

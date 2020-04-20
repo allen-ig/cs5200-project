@@ -1,4 +1,4 @@
-package models;
+package server.models;
 
 import javax.persistence.*;
 
