@@ -1,6 +1,6 @@
-package server.repositories;
+package project.repositories;
 
-import server.models.Person;
+import project.models.Person;
 import org.springframework.data.repository.CrudRepository;
 
 public interface PersonRepository extends CrudRepository<Person,Integer> {

@@ -1,6 +1,6 @@
-package server.dao;
+package project.dao;
 
-import server.models.*;
+import project.models.*;
 
 public interface MovieDao {
     public void truncateDatabase();

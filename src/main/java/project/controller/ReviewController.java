@@ -1,10 +1,10 @@
-package server.controller;
+package project.controller;
 
-import server.models.Movie;
-import server.models.Review;
+import project.models.Movie;
+import project.models.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import server.repositories.ReviewRepository;
+import project.repositories.ReviewRepository;
 
 import java.util.ArrayList;
 import java.util.List;

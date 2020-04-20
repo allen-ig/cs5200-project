@@ -1,7 +1,7 @@
-package server.repositories;
+package project.repositories;
 
-import server.models.Review;
-import server.models.User;
+import project.models.Review;
+import project.models.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

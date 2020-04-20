@@ -1,6 +1,6 @@
-package server.repositories;
+package project.repositories;
 
-import server.models.Crew;
+import project.models.Crew;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CrewRepository extends CrudRepository<Crew, Integer> {

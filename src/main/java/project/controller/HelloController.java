@@ -1,12 +1,12 @@
-package server.controller;
+package project.controller;
 
-import server.models.HelloObject;
+import project.models.HelloObject;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import server.repositories.HelloRepository;
+import project.repositories.HelloRepository;
 
 import java.util.List;
 

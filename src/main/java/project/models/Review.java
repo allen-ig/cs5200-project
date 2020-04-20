@@ -1,4 +1,4 @@
-package server.models;
+package project.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

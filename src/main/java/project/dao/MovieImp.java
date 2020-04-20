@@ -1,11 +1,11 @@
-package server.dao;
+package project.dao;
 
-import server.models.*;
+import project.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import server.repositories.CrewRepository;
-import server.repositories.MovieRepository;
-import server.repositories.PersonRepository;
-import server.repositories.ReviewRepository;
+import project.repositories.CrewRepository;
+import project.repositories.MovieRepository;
+import project.repositories.PersonRepository;
+import project.repositories.ReviewRepository;
 
 public class MovieImp implements MovieDao {
     @Autowired

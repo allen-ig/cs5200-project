@@ -1,8 +1,8 @@
-package server.controller;
+package project.controller;
 
-import server.dao.MovieDao;
-import server.dao.MovieImp;
-import server.models.User;
+import project.dao.MovieDao;
+import project.dao.MovieImp;
+import project.models.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
