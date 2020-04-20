@@ -7,8 +7,8 @@ class SearchField extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            keyword: '',
-            movies: []
+            keyword: this.props.keyword,
+            movies: this.props.movies
         }
     }
     
@@ -29,8 +29,8 @@ class SearchField extends React.Component{
             <div className="d-flex justify-content-center row">
                 <Form inline>
                     <FormControl type="text" placeholder="search" className="sm-2" onChange={this.handleChange}/>
-                    <Link to={{pathname:"/search", state:{'keyword': this.state.keyword}}}>
-                        <Button onClick={this.searchMovie}>Search</Button>
+                    <Link to={{pathname:`/search`, state:{'keyword': this.state.keyword}}}>
+                        <Button type='submit' onClick={this.searchMovie}>Search</Button>
                     </Link>
                 </Form>
             </div>

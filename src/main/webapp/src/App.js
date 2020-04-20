@@ -36,7 +36,7 @@ class App extends React.Component{
                     <Route path='/' exact render={() => <Landing/>}/>
                     <Route path='/register' exact render={() => <Register/>}/>
                     <Route path='/about' exact render={() => <About/>}/>
-                    <Route path='/search' exact render={(keyword) => <Searching keyword={keyword}/>}/>
+                    <Route path='/search' render={(keyword) => <Searching keyword={keyword}/>}/>
                     <Route path='/movies/:id' exact render={() => <Movie/>}/>
                 </Router>
                 <Footer/>

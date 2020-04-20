@@ -34,7 +34,7 @@ class Landing extends React.Component{
     render() {
         return (
             <div className="container mt-4 mb-4">
-                <SearchField/>
+                <SearchField keyword='' movies={[]}/>
                 <hr/>
                 <this.MyCarousel/>
             </div>
