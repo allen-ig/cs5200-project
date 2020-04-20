@@ -1,6 +1,6 @@
-package project.repositories;
+package edu.cs5200.repositories;
 
-import project.models.Movie;
+import edu.cs5200.models.Movie;
 import org.springframework.data.repository.CrudRepository;
 
 public interface MovieRepository extends CrudRepository<Movie, Integer> {

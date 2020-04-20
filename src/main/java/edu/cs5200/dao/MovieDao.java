@@ -1,6 +1,7 @@
-package project.dao;
+package edu.cs5200.dao;
 
-import project.models.*;
+import edu.cs5200.models.*;
+import edu.cs5200.models.*;
 
 public interface MovieDao {
     public void truncateDatabase();

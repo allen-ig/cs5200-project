@@ -1,11 +1,12 @@
-package project.dao;
+package edu.cs5200.dao;
 
-import project.models.*;
+import edu.cs5200.models.*;
+import edu.cs5200.repositories.MovieRepository;
+import edu.cs5200.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import project.repositories.CrewRepository;
-import project.repositories.MovieRepository;
-import project.repositories.PersonRepository;
-import project.repositories.ReviewRepository;
+import edu.cs5200.repositories.CrewRepository;
+import edu.cs5200.repositories.PersonRepository;
+import edu.cs5200.repositories.ReviewRepository;
 
 public class MovieImp implements MovieDao {
     @Autowired

@@ -1,7 +1,7 @@
-package project.repositories;
+package edu.cs5200.repositories;
 
-import project.models.Review;
-import project.models.User;
+import edu.cs5200.models.Review;
+import edu.cs5200.models.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

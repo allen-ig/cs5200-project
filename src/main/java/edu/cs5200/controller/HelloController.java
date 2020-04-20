@@ -1,12 +1,12 @@
-package project.controller;
+package edu.cs5200.controller;
 
-import project.models.HelloObject;
+import edu.cs5200.models.HelloObject;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import project.repositories.HelloRepository;
+import edu.cs5200.repositories.HelloRepository;
 
 import java.util.List;
 

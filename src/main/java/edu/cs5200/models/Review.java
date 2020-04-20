@@ -1,4 +1,4 @@
-package project.models;
+package edu.cs5200.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

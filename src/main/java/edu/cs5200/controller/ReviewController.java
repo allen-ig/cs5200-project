@@ -1,10 +1,10 @@
-package project.controller;
+package edu.cs5200.controller;
 
-import project.models.Movie;
-import project.models.Review;
+import edu.cs5200.models.Movie;
+import edu.cs5200.models.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import project.repositories.ReviewRepository;
+import edu.cs5200.repositories.ReviewRepository;
 
 import java.util.ArrayList;
 import java.util.List;

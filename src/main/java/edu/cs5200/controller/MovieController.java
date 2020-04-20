@@ -1,8 +1,8 @@
-package project.controller;
+package edu.cs5200.controller;
 
-import project.dao.MovieDao;
-import project.dao.MovieImp;
-import project.models.User;
+import edu.cs5200.dao.MovieDao;
+import edu.cs5200.dao.MovieImp;
+import edu.cs5200.models.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
