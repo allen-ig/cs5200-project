@@ -18,9 +18,18 @@ public class Review {
     @JsonIgnore
     @JoinColumn(name = "user_id")
     private User user;
-
+    @Enumerated
+    private Emotion emotion;
     private Float rate;
     private String text;
+
+    public Emotion getEmotion() {
+        return emotion;
+    }
+
+    public void setEmotion(Emotion emotion) {
+        this.emotion = emotion;
+    }
 
     public Float getRate() {
         return rate;

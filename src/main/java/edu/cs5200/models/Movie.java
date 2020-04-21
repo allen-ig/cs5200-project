@@ -6,9 +6,10 @@ import java.util.List;
 @Entity
 public class Movie {
     @javax.persistence.Id
+    @Column(name = "id", length = 50, nullable = false)
     private String imdbId;
     private String name;
-    private boolean is_adult;
+    private int year;
     private String language;
     private String genre;
 
@@ -50,12 +51,12 @@ public class Movie {
         this.name = name;
     }
 
-    public boolean isIs_adult() {
-        return is_adult;
+    public int getYear() {
+        return year;
     }
 
-    public void setIs_adult(boolean is_adult) {
-        this.is_adult = is_adult;
+    public void setYear(int year) {
+        this.year = year;
     }
 
     public String getLanguage() {

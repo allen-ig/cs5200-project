@@ -29,8 +29,8 @@ public class ReviewController {
     @PostMapping("/api/review/{userId}/{movieId}/create")
     public void createReview(
             @PathVariable int userId,
-            @PathVariable int movieId,
-            @RequestBody String text){
+            @PathVariable String movieId,
+            @RequestBody Review review){
         Optional<User> p = userRepository.findById(userId);
         Optional<Movie> optionalMovie = movieRepository.findById(movieId);
         User user = null;
@@ -39,15 +39,13 @@ public class ReviewController {
             user = p.get();
             movie = optionalMovie.get();
         }
-        Review review1 = new Review();
-        review1.setUser(user);
-        review1.setMovie(movie);
-        review1.setText(text);
-        reviewRepository.save(review1);
+        review.setUser(user);
+        review.setMovie(movie);
+        reviewRepository.save(review);
     }
 
     @GetMapping("/api/reviews/all/movie/{movieId}")
-    public List<Review> findAllReviewsForMovie(@PathVariable Integer movieId){
+    public List<Review> findAllReviewsForMovie(@PathVariable String movieId){
         Optional<Movie> optionalMovie = movieRepository.findById(movieId);
         List<Review> res = new ArrayList<>();
         if (optionalMovie.isPresent()){

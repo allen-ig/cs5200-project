@@ -18,16 +18,17 @@ public class MovieController {
 
     @PostMapping("/api/movie/create")
     public void createMovie(@RequestBody Movie movie){
+        movie.setImdbId(movie.getImdbId());
         movieRepository.save(movie);
     }
 
     @DeleteMapping("/api/movie/{movieId}/delete")
-    public void deleteMovie(@PathVariable int movieId){
+    public void deleteMovie(@PathVariable String movieId){
         movieRepository.deleteById(movieId);
     }
 
     @GetMapping("/api/movie/{movieId}")
-    public Movie findMovieById(@PathVariable int movieId){
+    public Movie findMovieById(@PathVariable String movieId){
         Optional<Movie> optionalMovie = movieRepository.findById(movieId);
         return optionalMovie.orElse(null);
     }

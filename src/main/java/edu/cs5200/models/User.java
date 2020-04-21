@@ -8,8 +8,6 @@ import java.util.List;
 @Entity
 
 public class User extends Person {
-    private int grad_year;
-    private float scholarship;
     @OneToMany(mappedBy = "user",cascade=CascadeType.MERGE)
     private List<User> Users;
     @ManyToOne(cascade = CascadeType.MERGE)
@@ -24,23 +22,6 @@ public class User extends Person {
 //    @JsonIgnore
 //    @JoinColumn(name = "section_id")
 //    private section section;
-
-
-    public int getGrad_year() {
-        return grad_year;
-    }
-
-    public void setGrad_year(int grad_year) {
-        this.grad_year = grad_year;
-    }
-
-    public float getScholarship() {
-        return scholarship;
-    }
-
-    public void setScholarship(float scholarship) {
-        this.scholarship = scholarship;
-    }
 
     public List<User> getUsers() {
         return Users;
