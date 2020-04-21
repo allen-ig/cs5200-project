@@ -4,6 +4,7 @@ import edu.cs5200.models.Movie;
 import edu.cs5200.models.Person;
 import edu.cs5200.models.Review;
 import edu.cs5200.models.User;
+import edu.cs5200.repositories.MovieRepository;
 import edu.cs5200.repositories.PersonRepository;
 import edu.cs5200.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class ReviewController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    MovieRepository movieRepository;
+
     @PostMapping("/api/review/{userId}/create")
     public void createReview(
             @PathVariable int userId,
@@ -36,10 +40,23 @@ public class ReviewController {
 //        reviewRepository.save(review);
     }
 
-    @GetMapping("/api/review/all/{movieId}")
-    public List<Movie> findAllReviewsForMovie(@PathVariable String movieId){
-        List<Movie> res = new ArrayList<>();
+    @GetMapping("/api/reviews/all/movie/{movieId}")
+    public List<Review> findAllReviewsForMovie(@PathVariable Integer movieId){
+        Optional<Movie> optionalMovie = movieRepository.findById(movieId);
+        List<Review> res = new ArrayList<>();
+        if (optionalMovie.isPresent()){
+            res = reviewRepository.findReviewByMovie(optionalMovie.get());
+        }
+        return res;
+    }
 
+    @GetMapping("/api/reviews/all/user/{userId}")
+    public List<Review> findAllReviewsForUser(@PathVariable Integer userId){
+        Optional<User> optionalUser = userRepository.findById(userId);
+        List<Review> res = new ArrayList<>();
+        if (optionalUser.isPresent()){
+            res = reviewRepository.findReviewByUser(optionalUser.get());
+        }
         return res;
     }
 }

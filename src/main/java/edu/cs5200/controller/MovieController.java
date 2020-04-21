@@ -15,8 +15,8 @@ public class MovieController {
     @Autowired
     MovieRepository movieRepository;
 
-    @GetMapping("/api/test")
-    public String createUser(){
+    @GetMapping("/api/movie/create")
+    public String createMovie(){
         return "hello";
     }
 }
