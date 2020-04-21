@@ -22,6 +22,15 @@ public class Review {
     private Emotion emotion;
     private Float rate;
     private String text;
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public Emotion getEmotion() {
         return emotion;

@@ -4,7 +4,7 @@ import edu.cs5200.models.Manager;
 import edu.cs5200.repositories.ManagerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
 public class ManagerController {
     @Autowired

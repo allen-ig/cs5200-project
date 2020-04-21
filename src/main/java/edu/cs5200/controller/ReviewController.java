@@ -14,7 +14,7 @@ import edu.cs5200.repositories.ReviewRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
 public class ReviewController {
     @Autowired
@@ -40,6 +40,12 @@ public class ReviewController {
             movie = optionalMovie.get();
         }
         review.setUser(user);
+        try {
+            assert user != null;
+            review.setUsername(user.getUsername());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         review.setMovie(movie);
         reviewRepository.save(review);
     }

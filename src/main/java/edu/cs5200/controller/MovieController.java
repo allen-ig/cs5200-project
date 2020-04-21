@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
-
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
 public class MovieController {
     MovieDao movieDao = MovieImp.getInstance();
