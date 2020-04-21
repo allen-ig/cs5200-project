@@ -24,7 +24,7 @@ public class Movie {
     @OneToMany(mappedBy = "movie",cascade= CascadeType.MERGE)
     private List<Review> Reviews;
 
-    @OneToMany(mappedBy = "movie",cascade= CascadeType.MERGE)
+    @ManyToMany(mappedBy = "movies",cascade= CascadeType.MERGE)
     private List<Crew> Crews;
 
     public List<Crew> getCrews() {
