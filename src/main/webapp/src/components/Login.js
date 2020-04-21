@@ -22,6 +22,11 @@ class Login extends React.Component {
             show: nextProps.show
         })
     }
+    //
+    // login = () => {
+    //     fetch
+    //     this.props.login(userinfo)
+    // }
 
     render() {
         return (
@@ -48,7 +53,7 @@ class Login extends React.Component {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button className="login" variant="primary" size='lg' block>login</Button>
+                    <Button className="login" variant="primary" size='lg' block >login</Button>
                 </Modal.Footer>
             </Modal>
         );

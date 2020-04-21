@@ -11,13 +11,15 @@ import About from "./views/About"
 import Searching from "./views/Searching";
 import MovieCard from "./components/MovieCard";
 import Movie from "./views/Movie";
+import Crew from "./views/Crew";
 
 class App extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             isLoggedIn: false,
-            showLoginModal: false
+            showLoginModal: false,
+            userInfo: {}
         }
     }
 
@@ -26,18 +28,25 @@ class App extends React.Component{
             showLoginModal: true
         })
     }
+    
+    login = userinfo => {
+        this.setState({
+            userinfo: userinfo
+        })
+    }
 
     render() {
         return (
             <div className="App">
                 <Header openLoginModal={this.openLoginModal} isLoggedIn={this.state.isLoggedIn}/>
-                <Login isLoggedIn={this.state.isLoggedIn} show={this.state.showLoginModal}/>
+                <Login isLoggedIn={this.state.isLoggedIn} login={this.login} show={this.state.showLoginModal}/>
                 <Router>
                     <Route path='/' exact render={() => <Landing/>}/>
                     <Route path='/register' exact render={() => <Register/>}/>
                     <Route path='/about' exact render={() => <About/>}/>
                     <Route path='/search' render={(keyword) => <Searching keyword={keyword}/>}/>
                     <Route path='/movies/:id' exact render={() => <Movie/>}/>
+                    <Route path='/crews/:crewname' exact render={() => <Crew/>}/>
                 </Router>
                 <Footer/>
             </div>

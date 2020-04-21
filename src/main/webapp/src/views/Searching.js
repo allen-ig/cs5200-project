@@ -1,4 +1,5 @@
 import React from 'react'
+import {withRouter} from 'react-router-dom'
 import MovieList from "../components/MovieList";
 import SearchField from "../components/SearchField";
 
@@ -39,4 +40,4 @@ class Searching extends React.Component {
     }
 }
 
-export default Searching
+export default withRouter(Searching)

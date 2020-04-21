@@ -1,7 +1,8 @@
 import React from 'react';
 import { Form, Row, Col, Button} from 'react-bootstrap'
+import {withRouter} from 'react-router-dom'
 
-export default class ManagerConsole extends React.Component{
+class ManagerConsole extends React.Component{
     
     constructor(props){
         super(props)
@@ -16,7 +17,10 @@ export default class ManagerConsole extends React.Component{
     createMovie = () => {
         fetch(`http://localhost:8080/api/movie/create`, {
             method: "POST",
-            body: this.state
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
         }).then(() => alert("movie created!"),
             () => alert("failed to create movie!"))
     }
@@ -30,7 +34,11 @@ export default class ManagerConsole extends React.Component{
     
     updateMovie = () => {
         fetch(`http://localhost:8080/api/movie/${this.state.imdbId}/update`, {
-            method: "PUT"
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
         }).then(() => alert("movie updated!"),
             () => alert("failed to update movie!"))
     }
@@ -65,3 +73,5 @@ export default class ManagerConsole extends React.Component{
         );
     }
 }
+
+export default withRouter(ManagerConsole)

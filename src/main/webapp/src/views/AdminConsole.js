@@ -1,8 +1,9 @@
 import React from 'react';
 import { Form, Row, Col, Button} from 'react-bootstrap'
 import ManagerConsole from "./ManagerConsole";
+import {withRouter} from 'react-router-dom'
 
-export default class AdminConsole extends React.Component{
+class AdminConsole extends React.Component{
     
     constructor(props){
         super(props)
@@ -18,7 +19,10 @@ export default class AdminConsole extends React.Component{
     createUser = () => {
         fetch(`http://localhost:8080/api/user/create`, {
             method: "POST",
-            body: this.state
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
         }).then(() => alert("user created!"),
             () => alert("failed to create user!"))
     }
@@ -32,9 +36,19 @@ export default class AdminConsole extends React.Component{
     
     updateUser = () => {
         fetch(`http://localhost:8080/api/user/${this.state.userId}/update`, {
-            method: "PUT"
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
         }).then(() => alert("user updated!"),
             () => alert("failed to update user!"))
+    }
+    
+    findAllUsers = () => {
+        fetch(`http://localhost:8080/api/user/all`,)
+            .then(response => response.json())
+            .then()
     }
     
     render() {
@@ -68,8 +82,13 @@ export default class AdminConsole extends React.Component{
                     <Row>
                         <Button onClick={this.deleteUser}>Delete User</Button>
                     </Row>
+                    <Row>
+                        <Button onClick={this.findAllUsers}>Find All User</Button>
+                    </Row>
                 </Form>
             </div>
         );
     }
 }
+
+export default withRouter(AdminConsole)

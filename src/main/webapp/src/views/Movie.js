@@ -31,6 +31,22 @@ class Movie extends React.Component{
             .then(response => this.setState({
                 reviews: response
             }))
+            .then(() => {
+                let requestBody = {
+                    name: this.state.movie.Title,
+                    imdbId: this.state.movie.imdbID,
+                    year: parseInt(this.state.movie.Year),
+                    language: this.state.movie.Language
+                }
+                console.log(requestBody)
+                return fetch(`http://localhost:8080/api/movie/create`, {
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody)
+                })
+            })
     }
     
     submitReview = () => {
