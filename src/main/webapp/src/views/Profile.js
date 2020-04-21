@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter} from "react-router-dom";
+import {withRouter, Link} from "react-router-dom";
 import SearchField from "../components/SearchField";
 import {Button} from "react-bootstrap";
 
@@ -45,7 +45,11 @@ class Profile extends React.Component{
                 {<ul>
                     {this.state.reviews.map((review, index) => {
                         console.log(review)
-                        return <li key={index}>{review.text}</li>
+                        return (
+                            <Link to={`/movie/${review.imdbId}`}>
+                                <li key={index}>{review.text}</li>
+                            </Link>
+                        )
                     })}
                 </ul>}
                 {/*{recommendeeList}*/}

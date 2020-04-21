@@ -23,6 +23,15 @@ public class Review {
     private Float rate;
     private String text;
     private String username;
+    private String imdbId;
+
+    public String getImdbId() {
+        return imdbId;
+    }
+
+    public void setImdbId(String imdbId) {
+        this.imdbId = imdbId;
+    }
 
     public String getUsername() {
         return username;

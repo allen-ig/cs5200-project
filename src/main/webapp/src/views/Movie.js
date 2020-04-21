@@ -52,7 +52,8 @@ class Movie extends React.Component{
         let requestBody = {
             text: this.state.newComment,
             emotion: this.state.emotion,
-            rate: this.state.rating
+            rate: this.state.rating,
+            imdbId: this.state.movie.imdbID
         }
         fetch(`http://localhost:8080/api/review/${this.props.userId}/${this.state.movie.imdbID}/create`, {
             method: 'POST',
@@ -60,7 +61,7 @@ class Movie extends React.Component{
                 'content-type': 'application/json'
             },
             body: JSON.stringify(requestBody)
-        }).then(() => this.forceUpdate())
+        }).then(()=>alert("success"))
     }
     
     render() {
