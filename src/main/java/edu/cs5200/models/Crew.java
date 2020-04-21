@@ -8,7 +8,6 @@ import java.util.Date;
 @Entity
 public class Crew {
     @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
 
     @ManyToOne(cascade = CascadeType.MERGE)
@@ -17,7 +16,7 @@ public class Crew {
     private Movie movie;
 
     private String name;
-    private Date birth_year;
+    private String birth_year;
     private String role;
 
     public String getRole() {
@@ -52,11 +51,11 @@ public class Crew {
         this.name = name;
     }
 
-    public Date getBirth_year() {
+    public String getBirth_year() {
         return birth_year;
     }
 
-    public void setBirth_year(Date birth_year) {
+    public void setBirth_year(String birth_year) {
         this.birth_year = birth_year;
     }
 }

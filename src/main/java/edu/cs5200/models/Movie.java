@@ -6,8 +6,7 @@ import java.util.List;
 @Entity
 public class Movie {
     @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
+    private String imdbId;
     private String name;
     private boolean is_adult;
     private String language;
@@ -35,12 +34,12 @@ public class Movie {
         this.Crews = Crews;
     }
 
-    public int getId() {
-        return Id;
+    public String getImdbId() {
+        return imdbId;
     }
 
-    public void setId(int id) {
-        Id = id;
+    public void setImdbId(String imdbId) {
+        this.imdbId = imdbId;
     }
 
     public String getName() {
