@@ -46,4 +46,11 @@ public class UserController {
                             @RequestBody User user){
         userRepository.save(user);
     }
+
+    @GetMapping("/api/user/recommenders/{userId}")
+    public List<User> findAllRecommenders(@PathVariable int userId){
+        Optional<User> optionalUser = userRepository.findById(userId);
+        User user = optionalUser.orElse(null);
+        return userRepository.findAllRecommenderForUser(user);
+    }
 }

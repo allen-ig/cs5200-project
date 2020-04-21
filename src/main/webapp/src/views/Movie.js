@@ -9,7 +9,7 @@ class Movie extends React.Component{
             movie: {},
             reviews: [],
             newComment: "",
-            userId: -1,
+            userId: 1,
             emotion: null,
             rating: 5
         }
@@ -78,7 +78,7 @@ class Movie extends React.Component{
                             <Toast key={index}>
                                 <Toast.Header closeButton={false}>
                                     <strong className="mr-auto">{review.username}</strong>
-                                    <small>{review.emotion}</small>
+                                    <small>{`${review.emotion} with rating ${review.rate}`}</small>
                                 </Toast.Header>
                                 <Toast.Body>{review.text}</Toast.Body>
                             </Toast>
