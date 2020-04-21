@@ -13,19 +13,34 @@ class AdminConsole extends React.Component{
             password: "",
             firstname: "",
             lastname: "",
-            recommemder_id: -1
+            recommemder_id: -1,
+            user: {}
         }
     }
     
     createUser = () => {
-        fetch(`http://localhost:8080/api/user/create`, {
+        if (this.state.recommemder_id === -1){fetch(`http://localhost:8080/api/user/create`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(this.state)
         }).then(() => alert("user created!"),
-            () => alert("failed to create user!"))
+            () => alert("failed to create user!"))}
+        else {
+            fetch(`http://localhost:8080/api/user/create${this.state.recommemder_id}`)
+                .then(response => response.json())
+                .then(response => this.setState({
+                    user: response
+                })).then(() => fetch(`http://localhost:8080/api/user/create`, {
+                method: "POST",
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(this.state)
+            })).then(() => alert("user created!"),
+                () => alert("failed to create user!"))
+        }
     }
     
     deleteUser = () => {
