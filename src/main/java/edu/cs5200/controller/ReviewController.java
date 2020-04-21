@@ -26,18 +26,24 @@ public class ReviewController {
     @Autowired
     MovieRepository movieRepository;
 
-    @PostMapping("/api/review/{userId}/create")
+    @PostMapping("/api/review/{userId}/{movieId}/create")
     public void createReview(
             @PathVariable int userId,
-            @RequestBody Movie movie){
+            @PathVariable int movieId,
+            @RequestBody String text){
         Optional<User> p = userRepository.findById(userId);
+        Optional<Movie> optionalMovie = movieRepository.findById(movieId);
         User user = null;
-        if (p.isPresent()) {
+        Movie movie = null;
+        if (p.isPresent() && optionalMovie.isPresent()) {
             user = p.get();
+            movie = optionalMovie.get();
         }
         Review review1 = new Review();
         review1.setUser(user);
-//        reviewRepository.save(review);
+        review1.setMovie(movie);
+        review1.setText(text);
+        reviewRepository.save(review1);
     }
 
     @GetMapping("/api/reviews/all/movie/{movieId}")

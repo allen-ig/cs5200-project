@@ -2,11 +2,12 @@ package edu.cs5200.controller;
 
 import edu.cs5200.dao.MovieDao;
 import edu.cs5200.dao.MovieImp;
-import edu.cs5200.models.User;
+import edu.cs5200.models.Movie;
 import edu.cs5200.repositories.MovieRepository;
-import edu.cs5200.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 public class MovieController {
@@ -15,8 +16,19 @@ public class MovieController {
     @Autowired
     MovieRepository movieRepository;
 
-    @GetMapping("/api/movie/create")
-    public String createMovie(){
-        return "hello";
+    @PostMapping("/api/movie/create")
+    public void createMovie(@RequestBody Movie movie){
+        movieRepository.save(movie);
+    }
+
+    @DeleteMapping("/api/movie/{movieId}/delete")
+    public void deleteMovie(@PathVariable int movieId){
+        movieRepository.deleteById(movieId);
+    }
+
+    @GetMapping("/api/movie/{movieId}")
+    public Movie findMovieById(@PathVariable int movieId){
+        Optional<Movie> optionalMovie = movieRepository.findById(movieId);
+        return optionalMovie.orElse(null);
     }
 }

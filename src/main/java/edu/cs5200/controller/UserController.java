@@ -5,6 +5,8 @@ import edu.cs5200.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -26,5 +28,15 @@ public class UserController {
     public User findUserById(@PathVariable int userId){
         Optional<User> optionalUser = userRepository.findById(userId);
         return optionalUser.orElse(null);
+    }
+
+    @GetMapping("/api/user/all")
+    public List<User> findAllUsers(){
+        Iterable<User> iterable = userRepository.findAll();
+        List<User> res = new ArrayList<>();
+        for (User user: iterable){
+            res.add(user);
+        }
+        return res;
     }
 }
