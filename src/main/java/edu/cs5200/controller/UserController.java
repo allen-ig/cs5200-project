@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class UserController {
     @Autowired
@@ -31,6 +31,11 @@ public class UserController {
         return optionalUser.orElse(null);
     }
 
+    @GetMapping("/api/user/username/{username}")
+    public User findUserByUsername(@PathVariable String username){
+        return userRepository.findUserByUsername(username);
+    }
+
     @GetMapping("/api/user/all")
     public List<User> findAllUsers(){
         Iterable<User> iterable = userRepository.findAll();
@@ -41,10 +46,15 @@ public class UserController {
         return res;
     }
 
-    @PutMapping("/api/user/{userId}/update")
+    @PatchMapping("/api/user/{userId}/update")
     public void updateUser(@PathVariable int userId,
                             @RequestBody User user){
-        userRepository.save(user);
+        User temp = userRepository.findById(userId).get();
+        temp.setFirstname(user.getFirstname());
+        temp.setLastname(user.getLastname());
+        temp.setUsername(user.getUsername());
+        temp.setPassword(user.getPassword());
+        userRepository.save(temp);
     }
 
     @GetMapping("/api/user/recommenders/{userId}")

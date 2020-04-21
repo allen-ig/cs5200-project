@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from "react-router-dom";
-import {Button, Form} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 
 class Crew extends React.Component{
     constructor(props){
@@ -22,7 +22,7 @@ class Crew extends React.Component{
                 this.setState({crew: response})
                 let requestBody = {
                     id: this.state.crew.id,
-                    birth_year: this.state.crew.birthday.split('-')[0],
+                    birth_year: this.state.crew.birthday ? this.state.crew.birthday.split('-')[0] : -1,
                     role: 'actor',
                     name: this.state.crew.name
                 }

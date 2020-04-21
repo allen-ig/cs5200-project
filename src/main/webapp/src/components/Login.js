@@ -7,7 +7,8 @@ class Login extends React.Component {
         super(props);
         this.state = {
             show: this.props.show,
-            isLoggedIn: this.props.isLoggedIn
+            isLoggedIn: this.props.isLoggedIn,
+            username: ""
         }
     }
 
@@ -22,11 +23,13 @@ class Login extends React.Component {
             show: nextProps.show
         })
     }
-    //
-    // login = () => {
-    //     fetch
-    //     this.props.login(userinfo)
-    // }
+
+    login = () => {
+        fetch(`http://localhost:8080/api/person/username/${this.state.username}`)
+            .then(response => response.json())
+            .then(response => this.props.login(response))
+            .then(this.handleClose)
+    }
 
     render() {
         return (
@@ -38,7 +41,7 @@ class Login extends React.Component {
                     <Form>
                         <Form.Group controlId='formBasicUsername'>
                             <Form.Label>Username</Form.Label>
-                            <Form.Control placeholder="Enter your Username"/>
+                            <Form.Control placeholder="Enter your Username" onChange={event => this.setState({username: event.target.value})}/>
                         </Form.Group>
                         <Form.Group controlId='formBasicPassword'>
                             <Form.Label>Password</Form.Label>
@@ -53,7 +56,7 @@ class Login extends React.Component {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button className="login" variant="primary" size='lg' block >login</Button>
+                    <Button className="login" variant="primary" size='lg' block onClick={this.login}>login</Button>
                 </Modal.Footer>
             </Modal>
         );

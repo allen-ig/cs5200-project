@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter} from "react-router-dom";
+import {withRouter, Link} from "react-router-dom";
 import {Button, Form, Toast} from "react-bootstrap";
 
 class Movie extends React.Component{
@@ -9,7 +9,7 @@ class Movie extends React.Component{
             movie: {},
             reviews: [],
             newComment: "",
-            userId: 1,
+            userId: this.props.userId,
             emotion: null,
             rating: 5
         }
@@ -38,7 +38,6 @@ class Movie extends React.Component{
                     year: parseInt(this.state.movie.Year),
                     language: this.state.movie.Language
                 }
-                console.log(requestBody)
                 return fetch(`http://localhost:8080/api/movie/create`, {
                     method: "POST",
                     headers: {
@@ -55,7 +54,7 @@ class Movie extends React.Component{
             emotion: this.state.emotion,
             rate: this.state.rating
         }
-        fetch(`http://localhost:8080/api/review/${this.state.userId}/${this.state.movie.imdbID}/create`, {
+        fetch(`http://localhost:8080/api/review/${this.props.userId}/${this.state.movie.imdbID}/create`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -72,18 +71,19 @@ class Movie extends React.Component{
                     <div className="col-md-6">
                         <img src={this.state.movie.Poster} alt='pic'/>
                         <hr/>
-                        <Button>Like</Button>
                     </div>
                     <div className="col-md-6">
                         {
-                            // Object.entries(this.state.movie).map((data, index) => {
-                            // return (
-                            //     <div key={index}>{`${data[0]}:${data[1]}`}</div>
-                            // )
-                            // })
                             data_columns.map((column, index) => {
+                                if (this.state.movie.Actors && column === 'Actors') {
+                                    return (this.state.movie['Actors'].split(',').map((actor, index) => {
+                                        return (
+                                            <div className='row' key={index}>Actor: <Link to={`/crews/${actor.toLowerCase()}`} key={index}>{actor}</Link></div>
+                                        )
+                                    }))
+                                }
                                 return (
-                                    <div key={index} className='row'>{column}: {this.state.movie[column]}</div>
+                                    column === 'Actors' ? null : <div key={index} className='row'>{column}: {this.state.movie[column]}</div>
                                 )
                             })
                         }
@@ -135,13 +135,3 @@ class Movie extends React.Component{
 }
 
 export default withRouter(Movie);
-
-
-{/*<div className="background-image" style={{*/}
-{/*    backgroundImage: `url(${this.state.movie.Poster})`,*/}
-{/*    backgroundSize: 'cover',*/}
-{/*    backgroundRepeat: 'non-repeat',*/}
-{/*    filter: 'blur(4px)',*/}
-{/*    '-webkit-filter': 'blur(4px)',*/}
-{/*    height: '100%'*/}
-{/*}}> </div>*/}

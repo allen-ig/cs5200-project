@@ -29,7 +29,7 @@ public class CrewController {
         return optionalCrew.orElse(null);
     }
 
-    @PutMapping("/api/user/{crewId}/update")
+    @PutMapping("/api/crew/{crewId}/update")
     public void updateMovie(@PathVariable int crewId,
                             @RequestBody Crew crew){
         crewRepository.save(crew);

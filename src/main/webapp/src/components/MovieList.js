@@ -20,14 +20,3 @@ class MovieList extends React.Component{
 }
 
 export default MovieList
-
-// <Card>
-// <Card.Img variant={'top'} src={movie.Poster}/>
-// <Card.Body>
-//     <Card.Title>{movie.Title}</Card.Title>
-//     <Card.Text>{movie.Year}</Card.Text>
-//     <Link to={`/movie/${movie.imdbID}`}>
-//         <Button>Open up</Button>
-//     </Link>
-// </Card.Body>
-// </Card>

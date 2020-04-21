@@ -8,7 +8,7 @@ class AdminConsole extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            userId: "",
+            id: "",
             username: "",
             password: "",
             firstname: "",
@@ -36,7 +36,7 @@ class AdminConsole extends React.Component{
     
     updateUser = () => {
         fetch(`http://localhost:8080/api/user/${this.state.userId}/update`, {
-            method: "PUT",
+            method: "PATCH",
             headers: {
                 'content-type': 'application/json'
             },
@@ -48,7 +48,7 @@ class AdminConsole extends React.Component{
     findAllUsers = () => {
         fetch(`http://localhost:8080/api/user/all`,)
             .then(response => response.json())
-            .then()
+            .then(response => alert(`All users: ${response.map(user => user.username)}`))
     }
     
     render() {
@@ -72,6 +72,7 @@ class AdminConsole extends React.Component{
                         <Col>
                             <Form.Control onChange={(event) => this.setState({lastname: event.target.value})} placeholder="Lastname" />
                         </Col>
+                        
                     </Row>
                     <Row>
                         <Button onClick={this.createUser}>Create User</Button>
