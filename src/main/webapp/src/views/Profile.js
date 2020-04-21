@@ -21,15 +21,18 @@ class Profile extends React.Component{
                 })
             })
     }
+    
+    renderRecommendeeList = () => {
+        console.log(this.state.userInfo)
+    }
+    
     render() {
-        // let reviewList = this.state.reviews.length === 0 ?
-        //      : null
-        // let recommendeeList = this.state.userInfo.users ?
-        //     <ul>
-        //         {this.state.userInfo.users.map((user, index) => {
-        //             return <li key={index}>{user.username}</li>
-        //         })}
-        //     </ul> : null
+        let recommendeeList = this.state.userInfo.users ?
+            <ul> All Recommendee
+                {this.state.userInfo.users.map((user, index) => {
+                    return <li key={index}>{user.username}</li>
+                })}
+            </ul> : null
 
         return (
             <div>
@@ -47,12 +50,13 @@ class Profile extends React.Component{
                         console.log(review)
                         return (
                             <Link to={`/movie/${review.imdbId}`}>
-                                <li key={index}>{review.text}</li>
+                                <li key={index}>{review.text} on {review.imdbId}</li>
                             </Link>
                         )
                     })}
                 </ul>}
-                {/*{recommendeeList}*/}
+                {/*<Button onClick={this.renderRecommendeeList}>Get Recommendee List</Button>*/}
+                {recommendeeList}
             </div>
             
         )

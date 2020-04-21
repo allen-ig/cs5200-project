@@ -1,6 +1,5 @@
 import React from 'react';
-// import logo from './logo.svg';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, withRouter} from 'react-router-dom';
 import './App.css';
 import Landing from "./views/Landing";
 import Footer from "./components/Footer";
@@ -52,7 +51,7 @@ class App extends React.Component{
                     <Route path='/register' exact render={() => <Register/>}/>
                     <Route path='/about' exact render={() => <About/>}/>
                     <Route path='/search' render={(keyword) => <Searching keyword={keyword}/>}/>
-                    <Route path='/movies/:id' exact render={() => <Movie userId={this.state.userInfo.id}/>}/>
+                    <Route path='/movies/:id' exact render={(match) => <Movie userId={this.state.userInfo.id} id={this.props.match.params.id}/>}/>
                     <Route path='/crews/:crewname' exact render={() => <Crew/>}/>
                     <Route path='/user/:username' exact render={() => <Profile userInfo={this.state.userInfo}/>}/>
                     <Route path='/admin/' exact render={() => <AdminConsole userInfo={this.state.userInfo}/>}/>
@@ -64,4 +63,4 @@ class App extends React.Component{
     }
 }
 
-export default App;
+export default withRouter(App);
