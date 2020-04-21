@@ -12,7 +12,8 @@ class AdminConsole extends React.Component{
             username: "",
             password: "",
             firstname: "",
-            lastname: ""
+            lastname: "",
+            recommemder_id: -1
         }
     }
     
@@ -72,7 +73,9 @@ class AdminConsole extends React.Component{
                         <Col>
                             <Form.Control onChange={(event) => this.setState({lastname: event.target.value})} placeholder="Lastname" />
                         </Col>
-                        
+                        <Col>
+                            <Form.Control onChange={(event) => this.setState({recommemder_id: event.target.value})} placeholder="Recommemder ID" />
+                        </Col>
                     </Row>
                     <Row>
                         <Button onClick={this.createUser}>Create User</Button>
