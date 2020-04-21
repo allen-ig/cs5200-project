@@ -32,4 +32,10 @@ public class MovieController {
         Optional<Movie> optionalMovie = movieRepository.findById(movieId);
         return optionalMovie.orElse(null);
     }
+
+    @PutMapping("/api/movie/{movieId}/update")
+    public void updateMovie(@PathVariable String movieId,
+                            @RequestBody Movie movie){
+        movieRepository.save(movie);
+    }
 }

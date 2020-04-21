@@ -1,5 +1,6 @@
 package edu.cs5200.controller;
 
+import edu.cs5200.models.Movie;
 import edu.cs5200.models.User;
 import edu.cs5200.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,11 @@ public class UserController {
             res.add(user);
         }
         return res;
+    }
+
+    @PutMapping("/api/user/{userId}/update")
+    public void updateUser(@PathVariable int userId,
+                            @RequestBody User user){
+        userRepository.save(user);
     }
 }
