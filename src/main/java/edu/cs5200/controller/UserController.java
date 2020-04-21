@@ -63,4 +63,14 @@ public class UserController {
         User user = optionalUser.orElse(null);
         return userRepository.findAllRecommenderForUser(user);
     }
+
+    @PostMapping("/api/user/create/{recommender_id}")
+    public void createUserByRecommendation(
+            @PathVariable int recommender_id,
+            @RequestBody User user){
+        Optional<User> optionalUser = userRepository.findById(recommender_id);
+        User temp = optionalUser.get();
+        user.setUser(temp);
+        userRepository.save(user);
+    }
 }
